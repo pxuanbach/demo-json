@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="demo"></div>
+  </body>
+  <!-- The Client JavaScript -->
+  <!-- <script>
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:3000/test", requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        data = JSON.parse(result)
+        document.getElementById("demo").innerHTML = data.name;
+      })
+      .catch((error) => console.log("error", error));
+  </script> -->
+
+  <!-- JSON Array from Server -->
+  <!-- <script>
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:3000/users", requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        data = JSON.parse(result)
+        document.getElementById("demo").innerHTML = data[3].email;
+      })
+      .catch((error) => console.log("error", error));
+  </script> -->
+
+  <!-- Request to Server with query params -->
+  <!-- <script>
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+    const limit = 10;
+    const skip = 10;
+    fetch(
+      `http://localhost:3000/users-pagination?limit=${limit}&skip=${skip}`,
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => {
+        data = JSON.parse(result);
+        let text = "";
+        for (let x in data) {
+          text += data[x].email + "<br>";
+        }
+        document.getElementById("demo").innerHTML = text;
+      })
+      .catch((error) => console.log("error", error));
+  </script> -->
+
+  <!-- POST Method -->
+  <!-- <script>
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      email: "pxuanbach1412@gmail.com",
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:3000/users", requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        data = JSON.parse(result);
+        if (data) {
+            alert(`Find a user with email ${data.email}`)
+        }
+      })
+      .catch((error) => console.log("error", error));
+  </script> -->
+
+  <!-- HTML Table -->
+  <!-- <script>
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+    const limit = 10;
+    const skip = 0;
+    fetch(
+      `http://localhost:3000/users-pagination?limit=${limit}&skip=${skip}`,
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => {
+        data = JSON.parse(result);
+        let text = "<table border='1'>";
+        for (let x in data) {
+          text += "<tr><td>" + data[x].email + "</td></tr>";
+        }
+        text += "</table>";
+        document.getElementById("demo").innerHTML = text;
+      })
+      .catch((error) => console.log("error", error));
+  </script> -->
+
+  <!-- HTML Drop Down List -->
+  <!-- <script>
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+    const limit = 10;
+    const skip = 0;
+    fetch(
+      `http://localhost:3000/users-pagination?limit=${limit}&skip=${skip}`,
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => {
+        data = JSON.parse(result);
+        let text = "<select>";
+        for (let x in data) {
+          text += "<option>" + data[x].email + "</option>";
+        }
+        text += "</select>";
+        document.getElementById("demo").innerHTML = text;
+      })
+      .catch((error) => console.log("error", error));
+  </script> -->
+</html>

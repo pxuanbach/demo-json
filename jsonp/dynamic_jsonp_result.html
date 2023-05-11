@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="demo"></div>
+  </body>
+  <script>
+    function jsonpDynamicResult(url, callback) {
+      const script = document.createElement("script");
+      script.src = url;
+
+      script.onload = function () {
+        this.remove();
+        window[callback](8);    // callbackFn(data)
+        delete window[callback];
+      };
+      document.body.appendChild(script);
+    }
+
+    jsonpDynamicResult(
+      "dynamic_json_result.js?callback=callbackFn",
+      "callbackFn"
+    );
+  </script>
+</html>

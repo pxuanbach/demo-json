@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="myselect" onchange="change_dynamic_table(this.value)">
+      <option value="">Choose an option:</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+    </select>
+    <div id="demo"></div>
+</body>
+  <!-- Dynamic HTML Table -->
+  <script>
+    function change_dynamic_table(limit = 10) {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+      fetch(
+        `http://localhost:3000/users-pagination?limit=${limit}`,
+        requestOptions
+      )
+        .then((response) => response.text())
+        .then((result) => {
+          data = JSON.parse(result);
+          let text = "<table border='1'>";
+          for (let x in data) {
+            text += "<tr><td>" + data[x].email + "</td></tr>";
+          }
+          text += "</table>";
+          document.getElementById("demo").innerHTML = text;
+        })
+        .catch((error) => console.log("error", error));
+    }
+  </script>
+</html>
